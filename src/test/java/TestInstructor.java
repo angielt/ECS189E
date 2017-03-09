@@ -20,21 +20,21 @@ public class TestInstructor {
 
     @Before
     public void setup() {
-        admin = new Admin();
+        this.admin = new Admin();
         this.instructor = new Instructor();
     }
     /** instructor assigned**/
     @Test
     public void testAddHomework() {
-        admin.createClass("Test1", 2017, "Instructor", 15);
+        this.admin.createClass("Test1", 2017, "Instructor", 15);
         this.instructor.addHomework("Instructor", "Test1", 2017, "Homework1", "first homework");
         assertTrue(this.instructor.homeworkExists("Test1", 2017, "Homework1" ));
     }
     /** instructor wrong class / not assigned to class **/
     @Test
     public void testAddHomework1() {
-        admin.createClass("Test1", 2017, "Instructor1", 15);
-        admin.createClass("Test2", 2017, "Instructor2", 15);
+        this.admin.createClass("Test1", 2017, "Instructor1", 15);
+        this.admin.createClass("Test2", 2017, "Instructor2", 15);
         this.instructor.addHomework("Instructor2", "Test1", 2017, "Homework1", "first homework");
         assertFalse(this.instructor.homeworkExists("Test1", 2017, "Homework1" ));
     }
@@ -42,14 +42,14 @@ public class TestInstructor {
     /** homework past year **/
     @Test
     public void testAddHomework2() {
-        admin.createClass("Test1", 2017, "Instructor1", 15);
+        this.admin.createClass("Test1", 2017, "Instructor1", 15);
         this.instructor.addHomework("Instructor1", "Test1", 2016, "Homework1", "first homework");
         assertFalse(this.instructor.homeworkExists("Test1", 2016, "Homework1" ));
     }
     /** homework wrong year **/
     @Test
     public void testAddHomework3() {
-        admin.createClass("Test2", 2017, "Instructor1", 15);
+        this.admin.createClass("Test2", 2017, "Instructor1", 15);
         this.instructor.addHomework("Instructor1", "Test1", 2018, "Homework1", "first homework");
         assertFalse(this.instructor.homeworkExists("Test1", 2018, "Homework1" ));
     }
@@ -65,7 +65,7 @@ public class TestInstructor {
     /** wrong year **/
     @Test
     public void testAddHomework4() {
-        admin.createClass("Test1", 2017, "Instructor1", 15);
+        this.admin.createClass("Test1", 2017, "Instructor1", 15);
 
         this.instructor.addHomework("Instructor1", "Test1", 2018, "Homework1", "first homework");
         assertFalse(this.instructor.homeworkExists("Test2", 2018, "Homework1"));
@@ -73,14 +73,14 @@ public class TestInstructor {
 
     @Test
     public void testAddHomework5() {
-        admin.createClass("Test1", 2017, "Instructor1", 15);
+        this.admin.createClass("Test1", 2017, "Instructor1", 15);
         this.instructor.addHomework("Instructor2", "Test1", 2017, "Homework1", "first homework");
     }
 
     /** instructor assigned, homework assigned, student submitted **/
     @Test
     public void testAssignGrade() {
-        admin.createClass("Test1", 2017, "Instructor1", 15);
+        this.admin.createClass("Test1", 2017, "Instructor1", 15);
         this.instructor.addHomework("Instructor1", "Test1", 2017, "Homework1", "First Homework");
         IStudent student = new Student();
         student.registerForClass("Vincent", "Test1", 2017);
@@ -92,7 +92,7 @@ public class TestInstructor {
     /** instructor not assigned **/
     @Test
     public void testAssignGrade2() {
-        admin.createClass("Test1", 2017, "Instructor1", 15);
+        this.admin.createClass("Test1", 2017, "Instructor1", 15);
         this.instructor.addHomework("Instructor1", "Test1", 2017, "Homework1", "First Homework");
         IStudent student = new Student();
         student.registerForClass("Vincent", "Test1", 2017);
@@ -104,7 +104,7 @@ public class TestInstructor {
     /** homework not assigned**/
     @Test
     public void testAssignGrade3() {
-        admin.createClass("Test1", 2017, "Instructor1", 15);
+        this.admin.createClass("Test1", 2017, "Instructor1", 15);
         this.instructor.addHomework("Instructor1", "Test1", 2017, "Homework2", "First Homework");
         IStudent student = new Student();
         student.registerForClass("Vincent", "Test1", 2017);
@@ -116,7 +116,7 @@ public class TestInstructor {
     /** Student never submitted homework **/
     @Test
     public void testAssignGrade4() {
-        admin.createClass("Test1", 2017, "Instructor1", 15);
+        this.admin.createClass("Test1", 2017, "Instructor1", 15);
         this.instructor.addHomework("Instructor1", "Test1", 2017, "Homework1", "First Homework");
         IStudent student = new Student();
         IStudent student1 =  new Student();
@@ -133,7 +133,7 @@ public class TestInstructor {
     /** percent grade over 100 **/
     @Test
     public void testAssignGrade5() {
-        admin.createClass("Test1", 2017, "Instructor1", 15);
+        this.admin.createClass("Test1", 2017, "Instructor1", 15);
         this.instructor.addHomework("Instructor1", "Test1", 2017, "Homework1", "First Homework");
         IStudent student = new Student();
         student.registerForClass("Vincent", "Test1", 2017);
@@ -145,7 +145,7 @@ public class TestInstructor {
     /** percent grade under 0 **/
     @Test
     public void testAssignGrade6() {
-        admin.createClass("Test1", 2017, "Instructor1", 15);
+        this.admin.createClass("Test1", 2017, "Instructor1", 15);
         this.instructor.addHomework("Instructor1", "Test1", 2017, "Homework1", "First Homework");
         IStudent student = new Student();
         student.registerForClass("Vincent", "Test1", 2017);
