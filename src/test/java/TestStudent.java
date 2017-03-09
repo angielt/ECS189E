@@ -69,7 +69,7 @@ public class TestStudent {
         assertTrue(this.student.hasSubmitted("Angie", "Homework1", "ECS189", 2017));
     }
 
-    /** homework exists, student not registered, class taught in current year **/
+    /** homework exists, student not registered, class taught in current year , unreasonable but i was about to be that student ha ha**/
     @Test
     public void testsubmitHomework1(){
         admin.createClass("ECS189", 2017, "Devanbu", 10);
