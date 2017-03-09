@@ -103,4 +103,24 @@ public class TestStudent {
         assertFalse(this.student.hasSubmitted("Angie", "Homework1", "ECS189", 2017));
     }
 
+    @Test
+    public void testsubmitHomework4(){
+        this.admin.createClass("ECS189", 2017, "Devanbu", 10);
+        this.student.registerForClass("Angie", "ECS189", 2017);
+        this.instructor.addHomework("Devanbu", "ECS189", 2017, "Homework1","First Homework");
+
+        this.student.submitHomework("Angie", "Homework1", "Solution", "ECS189" , 2018);
+        assertFalse(this.student.hasSubmitted("Angie", "Homework1", "ECS189", 2018));
+    }
+
+    @Test
+    public void testsubmitHomework5(){
+        this.admin.createClass("ECS189", 2018, "Devanbu", 10);
+        this.student.registerForClass("Angie", "ECS189", 2018);
+        this.instructor.addHomework("Devanbu", "ECS189", 2018, "Homework1","First Homework");
+
+        this.student.submitHomework("Angie", "Homework1", "Solution", "ECS189" , 2018);
+        assertFalse(this.student.hasSubmitted("Angie", "Homework1", "ECS189", 2018));
+    }
+
 }
